@@ -16,6 +16,7 @@ module HIndent
   ,fundamental
   ,gibiansky
   ,cramer
+  ,idris
   -- * Testing
   ,test
   ,testFile
@@ -32,6 +33,7 @@ import           HIndent.Styles.Cramer (cramer)
 import           HIndent.Styles.Fundamental (fundamental)
 import           HIndent.Styles.Gibiansky (gibiansky)
 import           HIndent.Styles.JohanTibell (johanTibell)
+import           HIndent.Styles.Idris (idris)
 import           HIndent.Types
 
 import           Control.Applicative ((<$>))
@@ -232,7 +234,7 @@ testAst x =
 -- | Styles list, useful for programmatically choosing.
 styles :: [Style]
 styles =
-  [fundamental,chrisDone,johanTibell,gibiansky,cramer]
+  [fundamental,chrisDone,johanTibell,gibiansky,cramer,idris]
 
 -- | Default extensions.
 defaultExtensions :: [Extension]

@@ -36,6 +36,7 @@ module HIndent.Pretty
   , spaced
   , lined
   , prefixedLined
+  , suffixedLined
   , commas
   -- * Wrapping
   , parens
@@ -232,6 +233,19 @@ prefixedLined pref ps' =
                             do newline
                                depend (write (T.fromText pref)) p')
                          ps)
+
+-- | Print all the printers separated newlines and optionally a line
+-- suffix.
+suffixedLined :: MonadState (PrintState s) m => Text -> [m ()] -> m ()
+suffixedLined suf ps' =
+  case ps' of
+    [] -> return ()
+    [p] -> p
+    (p:ps) ->
+      do p
+         write (T.fromText suf)
+         newline
+         suffixedLined suf ps
 
 -- | Set the (newline-) indent level to the given column for the given
 -- printer.
